@@ -3,7 +3,7 @@ import React from 'react'
 export default function AboutPage() {
   return (
     <div className="App">
-      <h1 testid='about-page'>AboutPage</h1>
+      <h1 data-testid='about-page'>ABOUT PAGE</h1>
     </div>
   )
 }

@@ -8,10 +8,10 @@ describe('all 1', () => {
     const linkElement = screen.getByText(/Hello world!/i);
     expect(linkElement).toBeInTheDocument();
 
-    await screen.findByRole('heading');
+    screen.getByTestId('header');
     await screen.findByRole('button');
 
-    const header = screen.getByRole('heading');
+    const header = screen.getByTestId('header');
     expect(header).toBeInTheDocument();
 
     const input = screen.getByPlaceholderText(/input value/i);

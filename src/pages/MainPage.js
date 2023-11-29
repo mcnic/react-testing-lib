@@ -23,7 +23,8 @@ function MainPage() {
 
   return (
     <div className="App">
-      <h1>Hello world!</h1>
+      <h1 data-testid='main-page'>MAIN PAGE</h1>
+      <h2 data-testid='header'>Hello world!</h2>
       <button onClick={onClick} data-testid='toggle-btn'>Click me</button>
       <input type='text' placeholder='input value...' onChange={onChange} />
       <div data-testid='value-elem'>{value}</div>
