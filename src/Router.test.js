@@ -23,4 +23,13 @@ describe('router', () => {
     })
     expect(screen.getByTestId('about-page')).toBeInTheDocument();
   })
+
+  test('errors elems', async () => {
+    render(
+      <MemoryRouter initialEntries={['/jytjhfgfdfascfvhvrercwxfse']}>
+        <App />
+      </MemoryRouter>);
+
+    expect(screen.getByTestId('error-page')).toBeInTheDocument();
+  })
 })

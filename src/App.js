@@ -3,6 +3,7 @@ import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom';
 import AboutPage from './pages/AboutPage'
 import MainPage from './pages/MainPage'
+import ErrorPage from './pages/ErrorPage'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </div>
   )
