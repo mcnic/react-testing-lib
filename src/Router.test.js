@@ -1,5 +1,4 @@
-import { render, screen, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App'
 
@@ -13,14 +12,10 @@ describe('router', () => {
     const mainLink = screen.getByTestId('main-link')
     const aboutLink = screen.getByTestId('about-link')
 
-    act(() => {
-      userEvent.click(mainLink);
-    })
+    fireEvent.click(mainLink);
     expect(screen.getByTestId('main-page')).toBeInTheDocument();
 
-    act(() => {
-      userEvent.click(aboutLink);
-    })
+    fireEvent.click(aboutLink);
     expect(screen.getByTestId('about-page')).toBeInTheDocument();
   })
 

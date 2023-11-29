@@ -1,4 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import UserDetailsPage from '../pages/UserDetailsPage'
 import Users from './Users';
 import axios from 'axios';
 
@@ -15,14 +18,18 @@ const users = [
   }
 ]
 
-describe('users 1', () => {
-  test('exists elems', async () => {
-    // axios.get.mockResolvedValue({ data: users })
-    axios.get.mockImplementation(async () => {
-      return new Promise((resolve) => resolve({ data: users }))
-    })
+describe('users', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
 
-    render(<Users />);
+  test('exists elems', async () => {
+    axios.get.mockResolvedValue({ data: users })
+    // axios.get.mockImplementation(async () => {
+    //   return new Promise((resolve) => resolve({ data: users }))
+    // })
+
+    render(<Users />, { wrapper: BrowserRouter });
 
     const showUsers = await screen.findAllByTestId('user-item');
 
@@ -30,5 +37,28 @@ describe('users 1', () => {
     expect(showUsers[0]).toContainHTML("Leanne Graham")
     expect(showUsers[1]).toContainHTML("Clementina DuBuque")
     expect(axios.get).toHaveBeenCalledTimes(1)
+  });
+
+  test('redirect in router', async () => {
+    axios.get.mockResolvedValue({ data: users })
+    // axios.get.mockImplementation(async () => {
+    //   return new Promise((resolve) => resolve({ data: users }))
+    // })
+
+    render(
+      <MemoryRouter initialEntries={['/users']}>
+        <Routes>
+          <Route path="/users" element={<Users />} />
+          <Route path="/users/:id" element={<UserDetailsPage />} />
+        </Routes>
+      </MemoryRouter>);
+    // const user = userEvent.setup()
+
+    const allUsers = await screen.findAllByTestId('user-item');
+    // screen.debug()
+    expect(allUsers.length).toBe(2)
+    fireEvent.click(allUsers[0]);
+    // screen.debug()
+    expect(screen.getByTestId('user-page')).toBeInTheDocument()
   });
 })

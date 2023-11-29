@@ -37,9 +37,7 @@ describe('all 1', () => {
 
     const button = screen.getByRole('button');
 
-    act(() => {
-      button.click();
-    });
+    fireEvent.click(button)
 
     // screen.debug();
     const textToggle = await screen.findByText(/toggle/i);
@@ -56,16 +54,12 @@ describe('all 1', () => {
 
     const btn = screen.getByTestId('toggle-btn');
 
-    act(() => {
-      fireEvent.click(btn);
-    });
+    fireEvent.click(btn)
 
     div = screen.queryByTestId('toggle-elem');
     expect(div).toBeInTheDocument()
 
-    act(() => {
-      fireEvent.click(btn);
-    });
+    fireEvent.click(btn)
 
     div = screen.queryByTestId('toggle-elem');
     expect(div).toBe(null)
@@ -78,16 +72,16 @@ describe('all 1', () => {
 
     const input = screen.getByPlaceholderText(/input value/i);
 
-    act(() => {
-      fireEvent.change(input, {
-        target: { value: '124' }
-      });
+    fireEvent.change(input, {
+      target: { value: '124' }
     })
+
     expect(screen.getByTestId('value-elem')).toContainHTML('124');
 
     act(() => {
       userEvent.type(input, '464624524574537');
     })
+    // await fireEvent.input(input, '464624524574537')
     expect(screen.getByTestId('value-elem')).toContainHTML('464624524574537');
   });
 })

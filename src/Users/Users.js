@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useCallback } from 'react';
 
@@ -19,10 +20,21 @@ export default function Users() {
   }, [loadUsers])
 
   return (
-    <div>
-      <b>Users</b>
-      {users.map(({ id, name }) => <div key={id} data-testid='user-item'>{name}</div>)}
-    </div>
+    <>
+      <h2>Users</h2>
+      <ul>
+        {users.map(({ id, name }) =>
+          <li key={id}>
+            <Link
+              to={`/users/${id}`}
+              data-testid='user-item'
+            >
+              {name}
+            </Link>
+          </li>
+        )}
+      </ul>
+    </>
 
   )
 }
