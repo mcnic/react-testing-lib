@@ -1,39 +1,21 @@
-import { useCallback, useEffect, useState } from 'react';
 import './App.css';
-import Users from './Users/Users';
+import React from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import AboutPage from './pages/AboutPage'
+import MainPage from './pages/MainPage'
 
 function App() {
-  const [data, setData] = useState(null)
-  const [toggle, setToggle] = useState(false)
-  const [value, setValue] = useState('')
-
-  useEffect(() => {
-    setTimeout(() => {
-      setData({})
-    }, 100)
-  }, [])
-
-  const onClick = useCallback(() => {
-    setToggle(prev => !prev);
-  }, []);
-
-
-  const onChange = useCallback((inp) => {
-    setValue(inp.target.value);
-  }, []);
-
   return (
-    <div className="App">
-      <h1>Hello world!</h1>
-      <button onClick={onClick} data-testid='toggle-btn'>Click me</button>
-      <input type='text' placeholder='input value...' onChange={onChange} />
-      <div data-testid='value-elem'>{value}</div>
-      {toggle && <div data-testid='toggle-elem'>toggle</div>}
-      {data && <div>data</div>}
-
-      <Users />
-    </div>
-  );
+    <BrowserRouter basename="/">
+      <Link to='/' data-testid='main-link'>main</Link>
+      <Link to='/about' data-testid='about-link'>about</Link>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/about" element={<AboutPage />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
+
 
 export default App;

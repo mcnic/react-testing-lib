@@ -1,10 +1,10 @@
 import { fireEvent, render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import App from './App';
+import MainPage from './MainPage';
 
 describe('all 1', () => {
   test('exists elems', async () => {
-    render(<App />);
+    render(<MainPage />);
     const linkElement = screen.getByText(/Hello world!/i);
     expect(linkElement).toBeInTheDocument();
 
@@ -22,7 +22,7 @@ describe('all 1', () => {
   });
 
   test('rdynamic elems', async () => {
-    render(<App />);
+    render(<MainPage />);
     const nulledText = screen.queryByText(/data/i);
     expect(nulledText).toBe(null);
 
@@ -31,7 +31,7 @@ describe('all 1', () => {
   });
 
   test('onClick button effect', async () => {
-    render(<App />);
+    render(<MainPage />);
 
     // screen.debug();
 
@@ -49,7 +49,7 @@ describe('all 1', () => {
   });
 
   test('by testid', async () => {
-    render(<App />);
+    render(<MainPage />);
 
     let div = screen.queryByTestId('toggle-elem');
     expect(div).toBe(null)
@@ -72,7 +72,7 @@ describe('all 1', () => {
   });
 
   test('input', async () => {
-    render(<App />);
+    render(<MainPage />);
 
     expect(screen.getByTestId('value-elem')).toContainHTML('');
 
