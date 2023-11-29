@@ -16,8 +16,6 @@ const users = [
 ]
 
 describe('users 1', () => {
-
-
   test('exists elems', async () => {
     // axios.get.mockResolvedValue({ data: users })
     axios.get.mockImplementation(async () => {
@@ -31,5 +29,6 @@ describe('users 1', () => {
     expect(showUsers.length).toEqual(2)
     expect(showUsers[0]).toContainHTML("Leanne Graham")
     expect(showUsers[1]).toContainHTML("Clementina DuBuque")
+    expect(axios.get).toHaveBeenCalledTimes(1)
   });
 })
