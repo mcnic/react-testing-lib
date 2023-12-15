@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCallback, useEffect, useState } from 'react';
-import Users from '../Users/Users';
+import Users from '../components/Users/Users';
 
 function MainPage() {
   const [data, setData] = useState(null)

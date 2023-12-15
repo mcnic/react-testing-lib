@@ -1,7 +1,7 @@
 import { screen, fireEvent } from '@testing-library/react';
 import "@testing-library/jest-dom";
 import axios from 'axios';
-import { renderWithRouter } from '../tests/helpers/renderWithRouter'
+import { renderWithRouter } from '../../tests/helpers/renderWithRouter'
 
 jest.mock('axios');
 
