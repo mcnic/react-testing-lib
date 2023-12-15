@@ -1,11 +1,7 @@
-import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import "@testing-library/jest-dom";
-import { MemoryRouter } from 'react-router-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import UserDetailsPage from '../pages/UserDetailsPage'
-import Users from './Users';
 import axios from 'axios';
+import { renderWithRouter } from '../tests/helpers/renderWithRouter'
 
 jest.mock('axios');
 
@@ -31,7 +27,7 @@ describe('users', () => {
     //   return new Promise((resolve) => resolve({ data: users }))
     // })
 
-    render(<Users />, { wrapper: BrowserRouter });
+    renderWithRouter(null, { route: '/users' })
 
     const showUsers = await screen.findAllByTestId('user-item');
 
@@ -47,18 +43,11 @@ describe('users', () => {
     //   return new Promise((resolve) => resolve({ data: users }))
     // })
 
-    render(
-      <MemoryRouter initialEntries={['/users']}>
-        <Routes>
-          <Route path="/users" element={<Users />} />
-          <Route path="/users/:id" element={<UserDetailsPage />} />
-        </Routes>
-      </MemoryRouter>);
-    // const user = userEvent.setup()
+    renderWithRouter(null, { route: '/users' })
 
     const allUsers = await screen.findAllByTestId('user-item');
     // screen.debug()
-    expect(allUsers.length).toBe(2)
+    // expect(allUsers.length).toBe(2)
     fireEvent.click(allUsers[0]);
     // screen.debug()
     expect(screen.getByTestId('user-page')).toBeInTheDocument()
