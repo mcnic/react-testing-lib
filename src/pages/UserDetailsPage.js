@@ -5,7 +5,7 @@ export default function UserDetailsPage() {
   let { id } = useParams();
   return (
     <>
-      <h1 data-testid='user-page'>USER DETAILS PAGE</h1>
+      <h1 data-testid='user-details-page'>USER DETAILS PAGE</h1>
       <div data-tesdid='value'>{id}</div>
     </>
   )

@@ -50,6 +50,6 @@ describe('users', () => {
     // expect(allUsers.length).toBe(2)
     fireEvent.click(allUsers[0]);
     // screen.debug()
-    expect(screen.getByTestId('user-page')).toBeInTheDocument()
+    expect(screen.getByTestId('user-details-page')).toBeInTheDocument()
   });
 })

@@ -21,7 +21,7 @@ export default function Users() {
 
   return (
     <>
-      <h2>Users</h2>
+      <h2 data-testid='user-page'>Users</h2>
       <ul>
         {users.map(({ id, name }) =>
           <li key={id}>

@@ -4,9 +4,12 @@ module.exports = {
   coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
   moduleNameMapper: {
-    // 'axios': 'axios/dist/node/axios.cjs',
-    // '\\.css$': './src/emptyModule.js',
+    '/axios/': 'axios/dist/node/axios.cjs',
+    // "^axios$": "axios/dist/node/axios.cjs",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
-  }
-
+  },
+  resolver: undefined,
+  fakeTimers: {
+    enableGlobally: true,
+  },
 }
