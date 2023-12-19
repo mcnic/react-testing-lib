@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import Users from '../components/Users/Users';
-import Conter from '../components/Counter'
+import Conter from '../components/Counter/Counter'
 
 
 function MainPage() {
