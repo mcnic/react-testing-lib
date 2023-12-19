@@ -1,6 +1,8 @@
 import React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import Users from '../components/Users/Users';
+import Conter from '../components/Counter'
+
 
 function MainPage() {
   const [data, setData] = useState(null)
@@ -33,6 +35,8 @@ function MainPage() {
       {data && <div>data</div>}
 
       <Users />
+
+      <Conter />
     </div>
   );
 }
