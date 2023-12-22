@@ -1,4 +1,4 @@
-original [README](src/README.MD)
+original [README](src/README.md)
 
 - Jest tests
 - react-testing-library
