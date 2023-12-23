@@ -1,6 +1,6 @@
 original [README](src/README.md)
 
-- Jest tests
-- react-testing-library
-- Redux tests
-- E2E webdriver.io tests
+- Jest
+- React-testing-library (react-router-dom + Redux)
+- E2E (Webdriver.io lake Sypress, Puppeteer, Hermione etc)
+- Storybook + Loki
